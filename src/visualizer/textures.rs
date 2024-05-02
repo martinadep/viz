@@ -48,11 +48,6 @@ impl Texturizable for Content{
 
     }
 }
-impl Texturizable for Robot{
-    fn get_texture(&self, ctx: &mut Context) -> Texture {
-        Texture::new(ctx, "./utils/robot.png").expect("failed to upload tile type texture")
-    }
-}
 
 ///It returns the texture of the texturizable object
 pub(crate) fn get_texture(text_obj: Box<dyn Texturizable>, ctx: &mut Context) -> Texture {

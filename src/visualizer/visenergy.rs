@@ -2,6 +2,7 @@ use robotics_lib::energy::Energy;
 use tetra::Context;
 use tetra::graphics::text::{Font, Text};
 use tetra::math::Vec2;
+use crate::visualizer::{PIXEL, SCALE};
 use crate::WINDOW_WIDTH;
 
 pub struct VisEnergy{
@@ -21,7 +22,10 @@ impl VisEnergy{
         }
     }
     pub fn draw(&mut self, ctx : &mut Context){
-        self.text.draw(ctx, Vec2::new(WINDOW_WIDTH as f32 / 2.0, 0.0));
+        self.text.draw(ctx, Vec2::new(WINDOW_WIDTH as f32 / 1.5 - PIXEL * SCALE, 0.0));
     }
-
+    pub fn update(&mut self, new_energy : usize){
+        self.energy = new_energy;
+        self.text.set_content(format!("Robot Energy : {}", self.energy));
+    }
 }
