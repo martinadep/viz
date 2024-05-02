@@ -1,8 +1,6 @@
 use std::collections::HashMap;
-use std::sync::mpsc;
-use std::sync::mpsc::{Receiver, Sender};
+use std::sync::mpsc::Receiver;
 use std::thread;
-use rand::Rng;
 
 use robotics_lib::world::tile::{Content, Tile};
 use robotics_lib::world::world_generator::{Generator, World};
@@ -17,9 +15,8 @@ pub const WINDOW_HEIGHT: i32 = 600;
 pub const WORLD_DEF_SIZE: usize = 10;
 
 pub fn start(
-       receiver_test: Receiver<i32>, vis_receiver: Receiver<VisData>
-    ) {
-
+    receiver_test: Receiver<i32>, vis_receiver: Receiver<VisData>,
+) {
     let t = thread::spawn(move || {
         let mut c = ContextBuilder::new("tyrex", WINDOW_WIDTH, WINDOW_HEIGHT)
             .show_mouse(true)
