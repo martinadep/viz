@@ -13,6 +13,7 @@ use crate::visualizer::textures::Texturizable;
 
 const OFFSET : f32 = 0.5;
 
+///visualizable backpack structure
 pub struct VisBackPack{
     square: Texture,
     size : usize,
@@ -23,12 +24,10 @@ pub struct VisBackPack{
 }
 impl VisBackPack {
     pub fn new(ctx : &mut Context, size : usize) -> Self{
-        let mut conts = HashMap::new();
-        conts.insert(Content::Coin(2), 10);
         Self{
-            square: Texture::new(ctx, "./utils/backp.png").expect("failed to upload robot image"),
+            square: Texture::new(ctx, "./utils/backp.png").expect("failed to upload inventory's square image"),
             size,
-            contents : conts,
+            contents : HashMap::new(),
             scale : BP_SCALE,
             text : Text::new(format!(""),
                              Font::vector(ctx, "./utils/fonts/roboto.ttf", 17.0)
@@ -77,7 +76,7 @@ impl VisBackPack {
             x += PIXEL * self.scale;
         }
     }
-    pub fn update(&mut self, backpack : HashMap<Content, usize>){
-        self.contents = backpack;
+    pub fn update(&mut self, new_backpack : HashMap<Content, usize>){
+        self.contents = new_backpack;
     }
 }

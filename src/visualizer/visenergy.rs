@@ -2,9 +2,10 @@ use robotics_lib::energy::Energy;
 use tetra::Context;
 use tetra::graphics::text::{Font, Text};
 use tetra::math::Vec2;
+use crate::start_fn::WINDOW_WIDTH;
 use crate::visualizer::{PIXEL, SCALE};
-use crate::WINDOW_WIDTH;
 
+///visualizable energy structure
 pub struct VisEnergy{
     energy : usize,
     text : Text,
